@@ -1,0 +1,10 @@
+[Unit]
+Description=Ansible Pull Timer
+
+[Timer]
+Unit=ansible-pull.service
+OnCalendar=*:0/30:00
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target
