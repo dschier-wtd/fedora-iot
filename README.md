@@ -13,4 +13,4 @@ in the future.
 ## Usage
 
 The usage of the repository is explained in
-[IoT/Edge - Fedora + Ansible + Podman](blog.while-true-do.io/iot-fedora-ansible-podman/ ).
+[IoT/Edge - Fedora + Ansible + Podman](https://blog.while-true-do.io/iot-fedora-ansible-podman/).
