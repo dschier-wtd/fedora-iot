@@ -32,7 +32,6 @@ On the desired host, the following command should be executed, once.
 /usr/bin/ansible-pull \
   --url https://github.com/dschier-wtd/fedora-iot.git \
   --inventory inventory/hosts.yml \
-  --only-if-changed \
   --checkout main \
   ansible/playbooks/install_requirements.yml \
   ansible/playbooks/configure_server.yml

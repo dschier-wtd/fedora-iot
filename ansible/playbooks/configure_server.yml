@@ -5,10 +5,10 @@
   tasks:
 
     - name: "Deploy Ansible Pull"
-      ansible.builtin.import_task:
-        name: "tasks/deploy_ansible_pull.yml"
+      ansible.builtin.import_tasks:
+        file: "tasks/deploy_ansible_pull.yml"
 
     - name: "Deploy Web Container"
-      ansible.builtin.import_task:
-        name: "tasks/deploy_web_container.yml"
+      ansible.builtin.import_tasks:
+        file: "tasks/deploy_web_container.yml"
 ...
