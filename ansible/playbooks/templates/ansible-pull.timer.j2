@@ -5,7 +5,7 @@ Description=Ansible Pull Timer
 
 [Timer]
 Unit=ansible-pull.service
-OnCalendar=*:0/30:00
+OnCalendar={{ ansible_pull_timer_schedule }}
 Persistent=true
 
 [Install]

@@ -2,6 +2,11 @@
 - name: "Configure localhost"
   hosts: "localhost"
 
+  vars:
+    ansible_pull_service_url: "https://github.com/dschier-wtd/fedora-iot.git"
+    ansible_pull_service_sleep: "30"
+    ansible_pull_timer_schedule: "*:0/30:00"
+
   tasks:
 
     - name: "Deploy Ansible Pull"
