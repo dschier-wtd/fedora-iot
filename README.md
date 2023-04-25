@@ -14,3 +14,35 @@ in the future.
 
 The usage of the repository is explained in
 [IoT/Edge - Fedora + Ansible + Podman](https://blog.while-true-do.io/iot-fedora-ansible-podman/).
+
+### Initialize
+
+On the desired host, the following command should be executed, once.
+
+```bash
+/usr/bin/ansible-pull \
+  --url https://github.com/dschier-wtd/fedora-iot.git \
+  --inventory inventory/hosts.yml \
+  --only-if-changed \
+  --checkout main \
+  ansible/playbooks/install_requirements.yml \
+  ansible/playbooks/configure_server.yml
+```
+
+You can check, if the services are enabled manually:
+
+```bash
+# check for ansible-pull services
+$ systemctl status ansible-pull.service
+$ systemctl status ansible-pull.timer
+
+# Check for the started containers
+$ systemctl status container-web.service
+$ podman ps
+```
+
+### Later on
+
+All further deployments will be coming from the playbooks, as provided in the
+desired service units. Meaning, you only need to update the playbook and wait
+until `ansible-pull` takes care.

@@ -1,0 +1,38 @@
+---
+# Ansible Pull
+- name: "Configure Ansible Pull Service"
+  ansible.builtin.template:
+    src: "ansible-pull.service.j2"
+    dest: "/etc/systemd/system/ansible-pull.service"
+    owner: "root"
+    group: "root"
+    mode: 0644
+  become: true
+
+- name: "Configure Ansible Pull Timer"
+  ansible.builtin.template:
+    src: "ansible-pull.timer.j2"
+    dest: "/etc/systemd/system/ansible-pull.timer"
+    owner: "root"
+    group: "root"
+    mode: 0644
+  become: true
+
+- name: "Reload Services"
+  ansible.builtin.systemd:
+    daemon_reload: true
+  become: true
+
+- name: "Enable Ansible Pull Service"
+  ansible.builtin.systemd:
+    name: "ansible-pull.service"
+    enabled: true
+  become: true
+
+- name: "Start & Enable Ansible Pull Timer"
+  ansible.builtin.systemd:
+    name: "ansible-pull.timer"
+    state: "started"
+    enabled: true
+  become: true
+...

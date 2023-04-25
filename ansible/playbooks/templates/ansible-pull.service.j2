@@ -1,3 +1,5 @@
+{{ ansible_managed | comment }}
+
 [Unit]
 Description=Run Ansible Pull
 After=network-online.target
@@ -8,5 +10,6 @@ ExecStart=/usr/bin/ansible-pull \
 	--inventory inventory/hosts.yml \
 	--only-if-changed \
 	--checkout main \
+	--sleep 30 \
 	ansible/playbooks/install_requirements.yml \
 	ansible/playbooks/configure_server.yml

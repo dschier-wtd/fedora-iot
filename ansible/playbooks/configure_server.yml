@@ -4,83 +4,11 @@
 
   tasks:
 
-    # Ansible Pull
-    - name: "Configure Ansible Pull Service"
-      ansible.builtin.template:
-        src: "ansible-pull.service.j2"
-        dest: "/etc/systemd/system/ansible-pull.service"
-        owner: "root"
-        group: "root"
-        mode: 0644
-      become: true
+    - name: "Deploy Ansible Pull"
+      ansible.builtin.import_task:
+        name: "tasks/deploy_ansible_pull.yml"
 
-    - name: "Configure Ansible Pull Timer"
-      ansible.builtin.template:
-        src: "ansible-pull.timer.j2"
-        dest: "/etc/systemd/system/ansible-pull.timer"
-        owner: "root"
-        group: "root"
-        mode: 0644
-      become: true
-
-    - name: "Reload Services"
-      ansible.builtin.systemd:
-        daemon_reload: true
-      become: true
-
-    - name: "Enable Ansible Pull Service"
-      ansible.builtin.systemd:
-        name: "ansible-pull.service"
-        enabled: true
-      become: true
-
-    - name: "Start & Enable Ansible Pull Timer"
-      ansible.builtin.systemd:
-        name: "ansible-pull.timer"
-        state: "started"
-        enabled: true
-      become: true
-
-    # Podman
-    - name: "Start & Enable Podman Socket"
-      ansible.builtin.service:
-        name: "podman.socket"
-        state: "started"
-        enabled: true
-      become: true
-
-    - name: "Start & Enable Podman Auto Update Timer"
-      ansible.builtin.service:
-        name: "podman-auto-update.timer"
-        state: "started"
-        enabled: true
-      become: true
-
-    # container-web
-    - name: "Download Image"
-      containers.podman.podman_image:
-        name: "docker.io/library/nginx"
-        tag: "latest"
-        state: "present"
-      become: true
-      tags:
-        - "image"
-        - "podman"
-        - "web"
-
-    - name: "Manage Service File"
-      ansible.builtin.template:
-        src: "container-web.service.j2"
-        dest: "/etc/systemd/system/container-web.service"
-        owner: "root"
-        group: "root"
-        mode: 0644
-      become: true
-
-    - name: "Manage container-web Service"
-      ansible.builtin.service:
-        name: "container-web.service"
-        state: "started"
-        enabled: true
-      become: true
+    - name: "Deploy Web Container"
+      ansible.builtin.import_task:
+        name: "tasks/deploy_web_container.yml"
 ...
