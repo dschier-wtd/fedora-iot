@@ -20,4 +20,8 @@
     - name: "Deploy Web Container"
       ansible.builtin.import_tasks:
         file: "tasks/deploy_web_container.yml"
+
+    - name: "Deploy MariaDB Container"
+      ansible.builtin.import_tasks:
+        file: "tasks/deploy_mariadb_container.yml"
 ...
