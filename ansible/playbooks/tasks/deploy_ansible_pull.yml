@@ -1,5 +1,4 @@
 ---
-# Ansible Pull
 - name: "Configure Ansible Pull Service"
   ansible.builtin.template:
     src: "ansible-pull.service.j2"

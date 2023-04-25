@@ -8,6 +8,10 @@
       ansible.builtin.import_tasks:
         file: "tasks/deploy_ansible_pull.yml"
 
+    - name: "Deploy Podman"
+      ansible.builtin.import_tasks:
+        file: "tasks/deploy_podman.yml"
+
     - name: "Deploy Web Container"
       ansible.builtin.import_tasks:
         file: "tasks/deploy_web_container.yml"

@@ -1,0 +1,14 @@
+---
+- name: "Manage Podman Packages"
+  ansible.builtin.package:
+    name: "podman"
+    state: "present"
+  become: true
+
+- name: "Start & Enable Podman Auto Update Timer"
+  ansible.builtin.service:
+    name: "podman-auto-update.timer"
+    state: "started"
+    enabled: true
+  become: true
+...
