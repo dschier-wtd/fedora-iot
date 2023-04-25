@@ -15,6 +15,15 @@ in the future.
 The usage of the repository is explained in
 [IoT/Edge - Fedora + Ansible + Podman](https://blog.while-true-do.io/iot-fedora-ansible-podman/).
 
+### Requirements
+
+Each host, that should consume this repository, needs Ansible installed. On
+AlmaLinux, Rocky, CentOS and Fedora this can be done via:
+
+```bash
+dnf install ansible-core
+```
+
 ### Initialize
 
 On the desired host, the following command should be executed, once.
