@@ -20,6 +20,9 @@ ExecStart=/usr/bin/podman run \
 	--detach \
 	--tty \
 	--name mariadb \
+	--env MARIADB_USER=example-user \
+	--env MARIADB_PASSWORD=my_cool_secret \
+	--env MARIADB_ROOT_PASSWORD=my-secret-pw \
 	docker.io/library/mariadb:latest
 ExecStop=/usr/bin/podman stop \
 	--ignore -t 10 \
