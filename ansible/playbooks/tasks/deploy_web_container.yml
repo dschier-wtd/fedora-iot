@@ -20,7 +20,7 @@
   become: true
 
 - name: "Manage container-web Service"
-  ansible.builtin.system:
+  ansible.builtin.systemd:
     name: "container-web.service"
     state: "started"
     enabled: true
